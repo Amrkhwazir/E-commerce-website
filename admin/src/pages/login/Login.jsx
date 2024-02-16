@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/apiCalls";
-
+import "./login.css"
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -21,32 +21,31 @@ const Login = () => {
 
 
   return (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <div className="main"> 
+    <div className="wrapper" >
+      <div className="title">Sign in</div>    
+      <form className="loginForm" >
+
       <input
-        style={{ padding: 10, marginBottom: 20 }}
+      className="loginInput"
         type="text"
         placeholder="username"
         onChange={(e) => setUsername(e.target.value)}
       />
       <input
-        style={{ padding: 10, marginBottom: 20 }}
+            className="loginInput"
+
         type="password"
         placeholder="password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleClick} style={{ padding: 10, width:100 }}>
+      <button className="Btn" onClick={handleClick}>
         Login
       </button>
-    </div>
-  );
-};
+      </form>
+      </div>
+      </div>
+      );
+      };
 
 export default Login;

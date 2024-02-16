@@ -9,6 +9,7 @@ import {
 import app from "../../firebase";
 import { addProduct } from "../../redux/apiCalls";
 import { useDispatch } from "react-redux";
+import Sidebar from "../../components/sidebar/Sidebar";
 
 export default function NewProduct() {
   const [inputs, setInputs] = useState({});
@@ -70,16 +71,12 @@ export default function NewProduct() {
 
   return (
     <div className="newProduct">
-      <h1 className="addProductTitle">New Product</h1>
+      
       <form className="addProductForm">
-        <div className="addProductItem">
-          <label>Image</label>
-          <input
-            type="file"
-            id="file"
-            onChange={(e) => setFile(e.target.files[0])}
-          />
-        </div>
+      <h1 className="addProductTitle">Add  New   Product</h1>
+       
+        <div className="inputContainer">
+
         <div className="addProductItem">
           <label>Title</label>
           <input
@@ -98,6 +95,8 @@ export default function NewProduct() {
             onChange={handleChange}
           />
         </div>
+        </div>
+        <div className="inputContainer">
         <div className="addProductItem">
           <label>Price</label>
           <input
@@ -111,12 +110,38 @@ export default function NewProduct() {
           <label>Categories</label>
           <input type="text" placeholder="jeans,skirts" onChange={handleCat} />
         </div>
+        </div>
+        <div className="inputContainer">
+        <div className="addProductItem">
+          <label>Price</label>
+          <input
+            name="price"
+            type="number"
+            placeholder="100"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="addProductItem">
+          <label>Categories</label>
+          <input type="text" placeholder="jeans,skirts" onChange={handleCat} />
+        </div>
+        </div>
+        <div className="inputContainer"> 
         <div className="addProductItem">
           <label>Stock</label>
           <select name="inStock" onChange={handleChange}>
             <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
+        </div>
+        <div className="addProductItem">
+          <label>Image</label>
+          <input
+            type="file"
+            id="file"
+            onChange={(e) => setFile(e.target.files[0])}
+          />
+        </div>
         </div>
         <button onClick={handleClick} className="addProductButton">
           Create
