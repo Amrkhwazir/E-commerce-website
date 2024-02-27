@@ -21,20 +21,37 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   const admin = true; 
-//   const admin = useSelector((state) => state.user.currentUser.isAdmin);
+  // const admin = useSelector((state) => state.user.currentUser.isAdmin);
   return (
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
         {admin && (
           <>
-         <Route path="/"element={<> <Topbar /><div className="container"><Sidebar /> <Home /></div></>}/>
-            <Route path="/users" element={<UserList />} />
+         <Route path="/"element={<> <Topbar /><div className="container"><Sidebar /> <Home />
+        </div></>}/>
+         <Route path="/users"element={<> <Topbar /><div className="container"><Sidebar /> <UserList />
+        </div></>}/>
+         <Route path="/user/:userId"element={<> <Topbar /><div className="container"><Sidebar /> <User />
+        </div></>}/>
+         <Route path="/newUser"element={<> <Topbar /><div className="container"><Sidebar /> <NewUser />
+        </div></>}/>
+            
+         <Route path="/products"element={<> <Topbar /><div className="container"><Sidebar /> <ProductList />
+        </div></>}/>
+         <Route path="/product"element={<> <Topbar /><div className="container"><Sidebar /> <Product />
+        </div></>}/>
+            
+         <Route path="/newproduct"element={<> <Topbar /><div className="container"><Sidebar /> <NewProduct />
+        </div></>}/>
+            
+            
+            {/* <Route path="/users" element={<UserList />} />
             <Route path="/user/:userId" element={<User />} />
             <Route path="/newUser" element={<NewUser />} />
             <Route path="/products" element={<ProductList />} />
             <Route path="/product/:productId" element={<Product />} />
-            <Route path="/newproduct" element={<NewProduct />} />   
+            <Route path="/newproduct" element={<NewProduct />} />    */}
           </>
         )}
       </Routes>
@@ -43,3 +60,4 @@ function App() {
 }
 export default App;
 
+    

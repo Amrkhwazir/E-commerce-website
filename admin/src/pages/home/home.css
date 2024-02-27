@@ -1,5 +1,6 @@
 .home{
     flex: 4;
+    z-index: 1;
 }
 
 .homeWidgets{
