@@ -19,6 +19,7 @@ import Success from "./pages/Success";
 import { useSelector } from "react-redux";
 import Products from "./components/Products";
 import Allproducts from "./pages/Allproducts";
+import ForgetPassword from "./pages/ForgetPassword";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -56,6 +57,10 @@ const App = () => {
     {
       path: "/register",
       element: <Register />,
+    },
+    {
+      path: "/forgetPassword",
+      element: <ForgetPassword />,
     },
   ]);
   

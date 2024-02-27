@@ -10,7 +10,8 @@ import {useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import {userRequest} from "./../requestMethods.js"
 
-const KEY = process.env.STRIPE_KEY;
+// const KEY = process.env.REACT_STRIPE_KEY;
+// console.log(KEY);
 
 const Container = styled.div``;
 
@@ -174,8 +175,10 @@ const Cart = () => {
         const res = await userRequest.post("/checkout/payment", {
           tokenId: stripeToken.id,
           amount: 500,
+          email: stripeToken.email
         });
-        history.push("/success", {
+        console.log(res.data);
+        history("/success", {
           stripeData: res.data,
           products: cart, });
       } catch {}
@@ -255,7 +258,7 @@ const Cart = () => {
               description={`Your total is $${cart.total}`}
               amount={cart.total * 100}
               token={onToken}
-              key={KEY}
+              stripeKey="pk_test_51ObmfoBzXLZlcsNIjwgxRZZtojHA7048xINncIuDg87hGOqiksri4lVd2ioPaInlYOdRAOHzHZQfONzI4ePgp8ED00iebyUTTN"
             >
               <Button>CHECKOUT NOW</Button>
             </StripeCheckout>
