@@ -1,9 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { login } from "../redux/apiCalls";
+import { forgetPassword, login } from "../redux/apiCalls";
 import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Container = styled.div`
   width: 100vw;
@@ -69,48 +70,49 @@ const Error = styled.span`
   color: red;
 `;
 
-const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+const ResetPassword = () => {
+  const [nPassword, setNpassword] = useState("");
+  const [cPassword, setCPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isFetching, error } = useSelector((state) => state.user);
+  const { isFetching} = useSelector((state) => state.user);
 
   const handleClick = (e) => {
     e.preventDefault();
-    login(dispatch, { username, password });
-    
-    if(isFetching === false) {
-      return navigate("/");
-    } else if(error === true && error === true){
-      return navigate("/login");
-    }
-    
+    if(nPassword === cPassword) {
+      return toast.error("Please Enter Valid password")
+    }else if(nPassword.length > 8 && cPassword > 8){
+      return toast.error("Please Enter maximum 8 letters")
+    }else{
+
+      forgetPassword(dispatch, { nPassword, cPassword });
+      setTimeout((()=>{
+        navigate("/");
+      }),2000);
+    };
   };
   return (
     <Container>
       <Wrapper>
-        <Title>SIGN IN</Title>
+        <Title>CHANGE PASSCODE</Title>
         <Form>
           <Input
-            placeholder="username"
-            onChange={(e) => setUsername(e.target.value)}
+            placeholder="New Password"
+            type="password"
+            onChange={(e) => setNpassword(e.target.value)}
           />
           <Input
-            placeholder="password"
+            placeholder="Confirm Password"
             type="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setCPassword(e.target.value)}
           />
           <Button onClick={handleClick} disabled={isFetching}>
-            LOGIN
+            SUBMIT
           </Button>
-          {error && <Error>Something went wrong...</Error>}
-          <Link onClick={() => navigate("/forgetPassword")}>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link onClick={() => navigate("/register")}>CREATE A NEW ACCOUNT</Link>
         </Form>
       </Wrapper>
     </Container>
   );
 };
 
-export default Login;
+export default ResetPassword;

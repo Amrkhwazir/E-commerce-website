@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const bcrypt = require("bcryptjs");
 const {
   verifyToken,
   verifyTokenAndAuthorization,
@@ -16,6 +17,14 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
   //   ).toString();
   // }
 
+  if(req.body.password){
+    try {
+        const salt = await bcrypt.genSalt(10);
+        req.body.password = await bcrypt.hash(req.body.password, salt)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
   try {
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,

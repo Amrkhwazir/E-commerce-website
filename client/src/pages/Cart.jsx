@@ -1,5 +1,5 @@
 import { Add, Remove } from "@material-ui/icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
@@ -9,11 +9,15 @@ import StripeCheckout from "react-stripe-checkout";
 import {useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import {userRequest} from "./../requestMethods.js"
+import PaymentReceiptModal from "../components/ReciptModal.jsx";
+import { UseDispatch } from "react-redux";
+import {paymentFailure, paymentStart, paymentSuccess} from "../redux/paymentRedux"
 
 // const KEY = process.env.REACT_STRIPE_KEY;
 // console.log(KEY);
 
-const Container = styled.div``;
+const Container = styled.div`
+`;
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -164,6 +168,10 @@ const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
   const history = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  
+
 
   const onToken = (token) => {
     setStripeToken(token);
@@ -171,22 +179,24 @@ const Cart = () => {
 
   useEffect(() => {
     const makeRequest = async () => {
+      dispatch(paymentStart())
       try {
         const res = await userRequest.post("/checkout/payment", {
           tokenId: stripeToken.id,
           amount: 500,
           email: stripeToken.email
         });
-        console.log(res.data);
-        history("/success", {
-          stripeData: res.data,
-          products: cart, });
-      } catch {}
+        // console.log(res.data);
+        dispatch(paymentSuccess(res.data))
+        setIsModalOpen(true)
+      } catch (err) {
+        dispatch(paymentFailure(err))
+      }
     };
     stripeToken && makeRequest();
   }, [stripeToken, cart.total, history, cart]);
   return (
-    <Container>
+    <Container >
       <Navbar />
       <Announcement />
       <Wrapper>
@@ -262,6 +272,7 @@ const Cart = () => {
             >
               <Button>CHECKOUT NOW</Button>
             </StripeCheckout>
+{isModalOpen === true && <PaymentReceiptModal />}
           </Summary>
         </Bottom>
       </Wrapper>
