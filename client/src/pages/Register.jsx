@@ -74,7 +74,7 @@ const Register = () => {
   const handleClick = (e) => {
     e.preventDefault();
       singUp(dispatch, { username, password, firstName, lastName, email, password, confirmPassword, });
-      // navigate("/login")
+      navigate("/")
   };
 
   return (
