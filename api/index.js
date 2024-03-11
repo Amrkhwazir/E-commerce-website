@@ -22,6 +22,9 @@ mongoose
   });
 
 app.use(cors());
+app.use(cors({
+  origin: 'e-commerce-website-3zj4.vercel.app'
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
