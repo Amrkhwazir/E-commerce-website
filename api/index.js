@@ -21,9 +21,11 @@ mongoose
     console.log(err);
   });
 
-app.use(cors());
+// app.use(cors());
 app.use(cors({
-  origin: 'e-commerce-website-3zj4.vercel.app'
+  origin: 'https://e-commerce-website-a6ca.vercel.app/',
+  methods: ["POST", "GET", "PUT", "DELETE", "PATCH"],
+  credentials : true
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,6 +37,6 @@ app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/checkout", stripeRoute);
 
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.API_URL || 5000, () => {
   console.log("Backend server is running!");
 });
