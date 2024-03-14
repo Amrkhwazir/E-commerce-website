@@ -135,6 +135,7 @@ const Product = () => {
     const getProduct = async () => {
       try {
         const res = await publicRequest.get("https://e-commerce-website-olive-three.vercel.app/api/products/find/" + id);
+        console.log(res.data)
         setProduct(res.data);
       } catch {}
     };
