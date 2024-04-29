@@ -40,3 +40,5 @@ app.use("/api/checkout", stripeRoute);
 app.listen(process.env.API_URL || 5000, () => {
   console.log("Backend server is running!");
 });
+
+module.exports = app
