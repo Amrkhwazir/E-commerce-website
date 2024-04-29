@@ -23,9 +23,7 @@ mongoose
 
 // app.use(cors());
 app.use(cors({
-  origin: 'https://e-commerce-website-a6ca.vercel.app/',
-  methods: ["POST", "GET", "PUT", "DELETE", "PATCH"],
-  credentials : true
+  origin: 'https://e-commerce-website-a6ca.vercel.app',
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
