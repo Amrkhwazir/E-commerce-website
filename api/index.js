@@ -22,11 +22,7 @@ mongoose
   });
 
 // app.use(cors());
-app.use(cors({
-  origin: 'https://e-commerce-website-a6ca.vercel.app/',
-  methods: ["POST", "GET", "PUT", "DELETE", "PATCH"],
-  credentials : true
-}));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -37,6 +33,6 @@ app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/checkout", stripeRoute);
 
-app.listen(process.env.API_URL || 5000, () => {
+app.listen(5000, () => {
   console.log("Backend server is running!");
 });

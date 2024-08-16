@@ -76,7 +76,7 @@ export const userData = [
     },
     {
       id: 2,
-      username: "Jon Snow",
+      username: "Amir khan",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -85,7 +85,7 @@ export const userData = [
     },
     {
       id: 3,
-      username: "Jon Snow",
+      username: "Rashid minhaj",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -94,7 +94,7 @@ export const userData = [
     },
     {
       id: 4,
-      username: "Jon Snow",
+      username: "Ameeen jawed",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -103,7 +103,7 @@ export const userData = [
     },
     {
       id: 5,
-      username: "Jon Snow",
+      username: "Ali",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -112,7 +112,7 @@ export const userData = [
     },
     {
       id: 6,
-      username: "Jon Snow",
+      username: "Shoaib",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -121,7 +121,7 @@ export const userData = [
     },
     {
       id: 7,
-      username: "Jon Snow",
+      username: "adnan",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
@@ -148,7 +148,7 @@ export const userData = [
     },
     {
       id: 10,
-      username: "Jon Snow",
+      username: "asfaq",
       avatar:
         "https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       email: "jon@gmail.com",
